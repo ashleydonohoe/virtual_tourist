@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Referenced code for long press with map pins from http://juliusdanek.de/blog/coding/2015/07/14/persistent-pins-tutorial/
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: "addPin:")
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.addPin(_:)))
         longPressGesture.minimumPressDuration = 0.5
         mapView.addGestureRecognizer(longPressGesture)
         
@@ -33,9 +33,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func addPin(gestureRecognizer: UIGestureRecognizer) {
         print("Long press")
         
+        let placeTapped: CGPoint = gestureRecognizer.locationInView(mapView)
+        let coordinateTapped: CLLocationCoordinate2D = mapView.convertPoint(placeTapped, toCoordinateFromView: mapView)
+        
+        if UIGestureRecognizerState.Began == gestureRecognizer.state {
+            let newPin = MKPointAnnotation()
+            newPin.coordinate = coordinateTapped
+            mapView.addAnnotation(newPin)
+        }
     }
-    
-    
-
 }
 
