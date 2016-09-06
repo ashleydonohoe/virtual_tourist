@@ -18,6 +18,7 @@
 		E00E09051D7E5E200096339B /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00E09011D7E5E200096339B /* Pin.swift */; };
 		E00E09061D7E5E200096339B /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00E09021D7E5E200096339B /* Photo+CoreDataProperties.swift */; };
 		E00E09071D7E5E200096339B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00E09031D7E5E200096339B /* Photo.swift */; };
+		E00E09091D7E61A80096339B /* FlickrAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00E09081D7E61A80096339B /* FlickrAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E00E09011D7E5E200096339B /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		E00E09021D7E5E200096339B /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E00E09031D7E5E200096339B /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E00E09081D7E61A80096339B /* FlickrAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				E00E08EC1D7E4D3A0096339B /* Info.plist */,
 				E00E08E41D7E4D3A0096339B /* Model.xcdatamodeld */,
 				E00E08FA1D7E5B920096339B /* CoreDataStack.swift */,
+				E00E09081D7E61A80096339B /* FlickrAPIClient.swift */,
 			);
 			path = VirtualTourist;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				E00E08E01D7E4D3A0096339B /* MapViewController.swift in Sources */,
 				E00E08DE1D7E4D3A0096339B /* AppDelegate.swift in Sources */,
 				E00E08E61D7E4D3A0096339B /* Model.xcdatamodeld in Sources */,
+				E00E09091D7E61A80096339B /* FlickrAPIClient.swift in Sources */,
 				E00E09051D7E5E200096339B /* Pin.swift in Sources */,
 				E00E09041D7E5E200096339B /* Pin+CoreDataProperties.swift in Sources */,
 				E00E08FB1D7E5B920096339B /* CoreDataStack.swift in Sources */,
