@@ -19,7 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // Referenced code for long press with map pins from http://juliusdanek.de/blog/coding/2015/07/14/persistent-pins-tutorial/
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: "addPin:")
-        longPressGesture.minimumPressDuration = 0.3
+        longPressGesture.minimumPressDuration = 0.5
         mapView.addGestureRecognizer(longPressGesture)
         
         mapView.delegate = self
