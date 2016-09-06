@@ -31,10 +31,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func addPin(gestureRecognizer: UIGestureRecognizer) {
-        print("Long press")
+        // Referenced code for long press with map pins from http://juliusdanek.de/blog/coding/2015/07/14/persistent-pins-tutorial/
         
         let placeTapped: CGPoint = gestureRecognizer.locationInView(mapView)
         let coordinateTapped: CLLocationCoordinate2D = mapView.convertPoint(placeTapped, toCoordinateFromView: mapView)
+        print("\(coordinateTapped.latitude) \(coordinateTapped.longitude)")
         
         if UIGestureRecognizerState.Began == gestureRecognizer.state {
             let newPin = MKPointAnnotation()
