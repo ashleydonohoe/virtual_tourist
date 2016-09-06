@@ -1,15 +1,18 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  VirtualTourist
 //
-//  Created by Gabriele on 9/5/16.
+//  Created by Ashley Donohoe on 9/5/16.
 //  Copyright © 2016 Ashley Donohoe. All rights reserved.
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
