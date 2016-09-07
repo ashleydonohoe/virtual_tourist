@@ -13,6 +13,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    let flickrClient = FlickrAPIClient.sharedInstance()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -41,6 +43,37 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let newPin = MKPointAnnotation()
             newPin.coordinate = coordinateTapped
             mapView.addAnnotation(newPin)
+        }
+    }
+    
+    func searchForPhotosByLocation(latitude: Double, longitude: Double) {
+        
+        // Add the pin's coordinates and other info to method params for Flickr API call
+        let methodParameters = [
+            FlickrAPIClient.ParameterKeys.Method: FlickrAPIClient.ParameterValues.SearchMethod,
+            FlickrAPIClient.ParameterKeys.ApiKey: FlickrAPIClient.ParameterValues.ApiKey,
+            FlickrAPIClient.ParameterKeys.BoundingBox: bboxString(latitude, longitude: longitude),
+            FlickrAPIClient.ParameterKeys.Extras: FlickrAPIClient.ParameterValues.MediumURL,
+            FlickrAPIClient.ParameterKeys.Format: FlickrAPIClient.ParameterValues.ResponseFormat,
+            FlickrAPIClient.ParameterKeys.NoCallback: FlickrAPIClient.ParameterValues.NoCallback
+        ]
+        
+        flickrClient.getImagesFromFlickr(methodParameters) { (success, errorString) in
+            // TBD
+        }
+    }
+    
+    // Function taken from FlickFinder to get the bbox to use as parameter
+    func bboxString(latitude: Double?, longitude: Double?) -> String {
+        // ensure bbox is bounded by minimum and maximums
+        if let latitude = latitude, let longitude = longitude {
+            let minimumLon = max(longitude - FlickrAPIClient.FlickrConstants.SearchBBoxHalfWidth, FlickrAPIClient.FlickrConstants.SearchLonRange.0)
+            let minimumLat = max(latitude - FlickrAPIClient.FlickrConstants.SearchBBoxHalfHeight, FlickrAPIClient.FlickrConstants.SearchLatRange.0)
+            let maximumLon = min(longitude + FlickrAPIClient.FlickrConstants.SearchBBoxHalfWidth, FlickrAPIClient.FlickrConstants.SearchLonRange.1)
+            let maximumLat = min(latitude + FlickrAPIClient.FlickrConstants.SearchBBoxHalfHeight, FlickrAPIClient.FlickrConstants.SearchLatRange.1)
+            return "\(minimumLon),\(minimumLat),\(maximumLon),\(maximumLat)"
+        } else {
+            return "0,0,0,0"
         }
     }
 }
